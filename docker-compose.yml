@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  app:
+    image: golang:1.6.1-alpine
+    volumes:
+    - .:/go/src/github.com/sdeysarkar/go-with-docker
+    working_dir: /go/src/github.com/sdeysarkar/go-with-docker
+    command: go run main.go
+    links:
+    - redis
+
+  redis:
+    image: redis:alpine
